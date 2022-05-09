@@ -1,5 +1,5 @@
 function doGet(e) {
-  const ssURL = "<Your Google Sheet URL>";
+  const ssURL = "<1S1H35OzQJ0C00MrnYAVpSDLRHiDwjlRzZyu7mp2hZ_c>";
 
   let ss = SpreadsheetApp.openByUrl(ssURL);
 
@@ -7,7 +7,7 @@ function doGet(e) {
   Logger.log(e);
   const sheetName = e.parameter.sheet;
 
-  if (sheetName === "address") {
+  if (sheetName === "For Netify app") {
     let sheet = ss.getSheetByName(sheetName);
 
     let address = sheet.getDataRange().getValues();
