@@ -1,4 +1,4 @@
-function writeDataToFirebase() {
+function doGet) {
   return HtmlService.createTemplateFromFile('index').evaluate();
 }
 
