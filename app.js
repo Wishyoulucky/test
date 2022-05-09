@@ -6,7 +6,7 @@ let searchTerm = "";
 let thailandAddress;
 
 async function fetchAddress() {
-  const url = "<Your API Web App URL>";
+  const url = "<https://script.google.com/a/macros/bumail.net/s/AKfycbyLG4HpoD7e32qXPwj1qwk88CN8VImlfiCJIEqapms6s21xv3lHs2Afdzz7XIyQBK5J/exec>";
   const res = await fetch(url);
 
   const data = await res.json();
