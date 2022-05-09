@@ -1,24 +1,28 @@
-function doGet(e) {
-  const ssURL = "<1S1H35OzQJ0C00MrnYAVpSDLRHiDwjlRzZyu7mp2hZ_c>";
+function writeDataToFirebase() {
+  return HtmlService.createTemplateFromFile('index').evaluate();
+}
 
-  let ss = SpreadsheetApp.openByUrl(ssURL);
+function processForm(formObject){  
+  var result = "";
+  if(formObject.searchtext){
+      result = search(formObject.searchtext);
+  }
+  return result;
+}
 
-  let response = [];
-  Logger.log(e);
-  const sheetName = e.parameter.sheet;
-
-  if (sheetName === "For Netify app") {
-    let sheet = ss.getSheetByName(sheetName);
-
-    let address = sheet.getDataRange().getValues();
-
-    address.forEach((address, index) => {
-      if (index !== 0) {
-        response.push({
-          province: address[0],
-          district: address[1],
-          subdistrict: address[2],
-          postcode: address[3],
+function search(searchtext){
+  var spreadsheetId = '1S1H35OzQJ0C00MrnYAVpSDLRHiDwjlRzZyu7mp2hZ_c';
+  var dataRage  = 'Sheet1!B2:G';
+  var data = Sheets.Spreadsheets.Values.get(spreadsheetId, dataRage).values;
+  var ar = [];
+  
+  data.forEach(function(f) {
+    if (~f.indexOf(searchtext)) {
+      ar.push(f);
+    }
+  });
+  return ar;
+}
         });
       }
     });
